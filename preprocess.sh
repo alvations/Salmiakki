@@ -1,9 +1,11 @@
 MOSES_SCRIPT=/home/expert/mosesdecoder/scripts
 SCRIPT_DIR=/home/expert/script.converter.distribution
 
+mkdir corpus.tok
+cd corpus.tok
+
 for file in train dev test; do
- cat ../corpus.org/${file}.en.txt | \
-    perl ${SCRIPT_DIR}/z2h-utf8.pl | \
+ cat ../corpus.org/${file}.en | \
     perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l en \
     > ${file}.tok.en 
 done 
