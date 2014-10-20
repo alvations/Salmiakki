@@ -1,4 +1,0 @@
-This is a test .
-This is a dog .
-This is a cat .
-You are a dog .
