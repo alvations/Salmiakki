@@ -10,6 +10,12 @@ for file in train dev test; do
     > ${file}.tok.en 
 done 
 
+for file in train dev test; do
+ cat ../corpus.org/${file}.fi | \
+    perl ${MOSES_SCRIPT}/tokenizer/tokenizer.perl -l "fi" \
+    > ${file}.tok.fi
+done 
+
 cat train.tok.en dev.tok.en > train_dev.tok.en
 ${MOSES_SCRIPT}/recaser/train-truecaser.perl --model truecase-model.en --corpus train_dev.tok.en
 
@@ -19,5 +25,5 @@ done
 
 cat train.en > train-all.en
 
-perl ${MOSES_SCRIPT}/training/clean-corpus-n.perl train ja en train-clean 1 80
+perl ${MOSES_SCRIPT}/training/clean-corpus-n.perl train "fi" en train-clean 1 80
 
